@@ -13,9 +13,36 @@ import { decrement, increment, setPageNo ,setUserData,setStatus} from './counter
 import {useGetPokemonByNameQuery} from './api/pokemonApi'
 import { useGetPicApiQuery,useSetPicApiMutation } from './api/pokemonApi';
 import {useGetAladanApiQuery } from './api/pokemonApi';
-
+import LocalizedStrings from 'react-native-localization';
 const Index = () => {
 
+
+    let strings = new LocalizedStrings({
+        "en-US":{
+          how:"How do you want your egg today?",
+          boiledEgg:"Boiled egg",
+          softBoiledEgg:"Soft-boiled egg",
+          choice:"How to choose the egg"
+        },
+        en:{
+          how:"How do you want your egg today?",
+          boiledEgg:"Boiled egg",
+          softBoiledEgg:"Soft-boiled egg",
+          choice:"How to choose the egg"
+        },
+        it: {
+          how:"Come vuoi il tuo uovo oggi?",
+          boiledEgg:"Uovo sodo",
+          softBoiledEgg:"Uovo alla coque",
+          choice:"Come scegliere l'uovo"
+        },
+        hi: {
+            how:"आज आप अपना अंडा कैसे चाहते हैं??",
+            boiledEgg:"Uovo sodo",
+            softBoiledEgg:"Uovo alla coque",
+            choice:"Come scegliere l'uovo"
+          }
+       });
     // const [getpageNo,setPageNoL]=useState(1)
     const count = useSelector((state) => state.counter.value)
     const status = useSelector((state) => state.counter.status)
@@ -46,7 +73,7 @@ const Index = () => {
     useEffect(() => {
         if(AladanDS)
         {
-            console.log(aladanD)
+            // console.log(aladanD)
         }
         if(isError){
             console.log(error)
@@ -58,7 +85,7 @@ const Index = () => {
         // }
 
         if(PicsSuccess2){
-            console.log(Pics2)
+            // console.log(Pics2)
             // dispatch(setPageNo(pageNo))
             //     console.log(pageNo)
             dispatch(setUserData(Pics2.data))
@@ -84,14 +111,18 @@ const Index = () => {
     }
     try {
      var s= await addPost(post)
-    //  console.log(s)
+     console.log(s)
     } catch(err) {
       console.log(err)
     }
   }
     return (
         <View >
-          
+          <View>
+          <Text style={{backgroundColor:'red'}}>
+  {strings.how}
+</Text>
+          </View>
             {/* <Button
          
           onPress={() => dispatch(increment())}

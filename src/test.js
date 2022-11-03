@@ -5,6 +5,7 @@ const test = () => {
   return (
     <View>
       <Text>test</Text>
+      <Text>Faizan</Text>
     </View>
   )
 }

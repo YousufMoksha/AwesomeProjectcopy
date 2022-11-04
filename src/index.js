@@ -163,7 +163,7 @@ const Index = () => {
                         </View>
                     )
                 })}
-                <View style={{flexDirection:'row-reverse'}}>
+                <View style={{flexDirection:'row-reverse',paddingBottom:100}}>
                 {getData==1?  <Button
          
          onPress={() =>{

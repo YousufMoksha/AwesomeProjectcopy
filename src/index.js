@@ -111,6 +111,7 @@ const Index = () => {
     }
     try {
      var s= await addPost(post)
+     
      console.log(s)
     } catch(err) {
       console.log(err)

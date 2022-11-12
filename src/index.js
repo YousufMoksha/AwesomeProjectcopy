@@ -11,9 +11,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, setPageNo ,setUserData,setStatus} from './counter/counterSlice'
 // import { fetchUser } from './counter/counterSlice';
 import {useGetPokemonByNameQuery} from './api/pokemonApi'
-import { useGetPicApiQuery,useSetPicApiMutation } from './api/pokemonApi';
+import { useGetPicApiQuery,useSetPicApiMutation,useGetPicApiMMutation } from './api/pokemonApi';
 import {useGetAladanApiQuery } from './api/pokemonApi';
 import LocalizedStrings from 'react-native-localization';
+
+import TestTitle from 'react-native-testtitle'
 const Index = () => {
 
 
@@ -65,12 +67,28 @@ const Index = () => {
 
     const {data:Pics2,isSuccess:PicsSuccess2}=useGetPicApiQuery(getData,{skip:getData==0})
       const [addPost, { isLoading }] =useSetPicApiMutation()
+      const [getMuT, { isLoading:isL}] =useGetPicApiMMutation()
     useEffect(() => {
      
         // 
         // dispatch(fetchUser(1))
     }, [])
+
+    const allD=async()=>{
+      // if(isL){
+     var abc=await getMuT()
+      console.log("abc")
+      console.log(abc.data)
+
+    // }
+    }
     useEffect(() => {
+      // console.log("sfad")
+      // if(isL){
+      //   console.log("sfad")
+        // allD()
+     
+      // }
         if(AladanDS)
         {
             // console.log(aladanD)
@@ -110,9 +128,10 @@ const Index = () => {
         "job": "leader"
     }
     try {
-     var s= await addPost(post)
+      allD()
+    //  var s= await addPost(post)
      
-     console.log(s)
+    //  console.log(s)
     } catch(err) {
       console.log(err)
     }
@@ -186,7 +205,7 @@ const Index = () => {
                
          
                 </View>
-              
+              <TestTitle title={"test app"}/>
             </ScrollView>
         </View>
     );

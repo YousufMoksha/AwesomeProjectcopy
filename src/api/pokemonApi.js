@@ -21,14 +21,18 @@ export const picApi = createApi({
         query: (page) => `users?page=${page}`,
       }),
       setPicApi:builder.mutation({
-        query(body) {
-          return {
-            url: `post`,
-            method: 'POST',
-            body,
-          }
+        query(body) {return {url: `post`,method: 'POST',body}
         }
     }),
+
+    getPicApiM:builder.mutation({
+      query() {
+        return {
+          url: `users`,
+          method: 'GET',
+        }
+      }
+  }),
   }), 
  })
 
@@ -47,5 +51,5 @@ export const picApi = createApi({
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const { useGetPokemonByNameQuery } = pokemonApi
-export const { useGetPicApiQuery,useSetPicApiMutation } = picApi
+export const { useGetPicApiQuery,useSetPicApiMutation,useGetPicApiMMutation } = picApi
 export const { useGetAladanApiQuery } = aladanApi
